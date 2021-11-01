@@ -1,4 +1,4 @@
-package yamux
+package multi
 
 import (
 	"bufio"
@@ -85,7 +85,7 @@ type sendReady struct {
 }
 
 // newSession is used to construct a new session
-func newSession(config *Config, conn io.ReadWriteCloser, client bool) *Session {
+func 	newSession(config *Config, conn io.ReadWriteCloser, client bool) *Session {
 	logger := config.Logger
 	if logger == nil {
 		logger = log.New(config.LogOutput, "", log.LstdFlags)
@@ -130,7 +130,7 @@ func (s *Session) IsClosed() bool {
 
 // CloseChan returns a read-only channel which is closed as
 // soon as the session is closed.
-func (s *Session) CloseChan() <-chan struct{} {
+func (s *Session) closeChan() <-chan struct{} {
 	return s.shutdownCh
 }
 
